@@ -46,7 +46,7 @@ The project classifies asteroids into the following categories:
 ## Results
 
 ### Best Performing Model: Custom Keras Neural Network
-- **Validation Accuracy**: 98.76%
+- **Validation Accuracy**: 99.18%
 - **Architecture**: 5 hidden layers with 16 nodes each
 - **Activation Function**: ReLU
 - **Epochs**: 149
