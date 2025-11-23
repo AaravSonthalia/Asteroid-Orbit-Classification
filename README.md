@@ -1,6 +1,6 @@
 # Exploring Asteroid Orbits: Neural Network Classification
 
-A machine learning research project that classifies asteroid orbits using neural networks and other ML models, achieving 98.76% validation accuracy through custom Keras architecture and SMOTE data augmentation.
+A machine learning research project that classifies asteroid orbits using neural networks and other ML models, achieving 99.18% validation accuracy through custom Keras architecture and SMOTE data augmentation.
 
 ## Overview
 
