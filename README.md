@@ -186,21 +186,6 @@ asteroid-orbit-classification/
 - Explore ensemble methods combining multiple high-performing models
 - Deploy model as a web application for real-time orbit classification
 
-## Contributing
-
-This was a research project completed as part of the Inspirit AI program. If you'd like to build upon this work, feel free to fork the repository and submit pull requests.
-
-## Acknowledgements
-
-- **Mentor**: Erick Ruiz
-- **Program**: Inspirit AI
-- **Data Source**: NASA Jet Propulsion Laboratory
-- **Tools**: Weights & Biases for hyperparameter optimization
-
-## License
-
-This project is available for educational and research purposes.
-
 ## References
 
 For detailed methodology, results, and references, please see the accompanying research paper `Research_Paper.pdf`.
