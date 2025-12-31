@@ -126,16 +126,6 @@ wandb.agent(sweep_id, train, count=100)
 - Argument of perihelion (w)
 - Orbital class (target variable)
 
-## Methodology
-
-1. **Data Collection**: Sourced from NASA JPL Small-Body Database
-2. **Feature Selection**: Reduced from 45 to 12 most relevant orbital parameters
-3. **Data Cleaning**: Median imputation for null values
-4. **Class Balancing**: SMOTE with k-neighbors=3 (after MBA removal)
-5. **Model Training**: Tested 5 different classification approaches
-6. **Optimization**: Hyperparameter tuning using W&B sweeps
-7. **Evaluation**: Accuracy metrics and confusion matrix analysis
-
 ## References
 
 For detailed methodology, results, and references, please see the accompanying research paper `Research_Paper.pdf`.
