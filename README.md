@@ -59,19 +59,6 @@ The project classifies asteroids into the following categories:
 - **Random Forest**: 94.87% accuracy
 - **Logistic Regression**: 56.23% accuracy
 
-## Installation
-
-### Prerequisites
-```bash
-Python 3.7+
-Google Colab (recommended) or local environment with GPU support
-```
-
-### Required Libraries
-```bash
-pip install numpy pandas matplotlib scikit-learn imbalanced-learn keras tensorflow wandb
-```
-
 ## Usage
 
 ### 1. Data Preprocessing
@@ -119,20 +106,6 @@ wandb.login()
 wandb.agent(sweep_id, train, count=100)
 ```
 
-## Project Structure
-
-```
-asteroid-orbit-classification/
-│
-├── data_preprocessing.py      # Data cleaning and preparation
-├── class_prediction.py         # Model training and evaluation
-├── Research_Paper.pdf          # Detailed research findings
-├── dataset.csv                 # Raw NASA JPL data (not included)
-├── dataSetX.csv               # Processed features (generated)
-├── dataSetY.csv               # Processed labels (generated)
-└── model.keras                # Saved trained model (generated)
-```
-
 ## Dataset
 
 **Source**: NASA Jet Propulsion Laboratory (JPL)
@@ -162,29 +135,6 @@ asteroid-orbit-classification/
 5. **Model Training**: Tested 5 different classification approaches
 6. **Optimization**: Hyperparameter tuning using W&B sweeps
 7. **Evaluation**: Accuracy metrics and confusion matrix analysis
-
-## Key Findings
-
-- **Number of nodes** showed the highest correlation with validation accuracy
-- Neural networks significantly outperformed traditional ML models
-- SMOTE effectively addressed class imbalance issues
-- The custom Keras model successfully distinguished between complex orbital patterns
-- MLP and KNN models also demonstrated strong performance (96%+)
-
-## Limitations
-
-- Main-belt asteroids (MBAs) were excluded to reduce computational load
-- Dataset may not fully represent all orbital dynamics in the solar system
-- Model performance on unseen data including MBAs requires further validation
-- Computational resources limited the scope of hyperparameter exploration
-
-## Future Work
-
-- Reintroduce main-belt asteroids with optimized computational resources
-- Incorporate additional orbital features for enhanced classification
-- Extend model to classify comets, satellites, and free-floating objects
-- Explore ensemble methods combining multiple high-performing models
-- Deploy model as a web application for real-time orbit classification
 
 ## References
 
