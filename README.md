@@ -8,23 +8,9 @@ This project tackles the challenge of classifying asteroids into 11 different or
 
 ## Features
 
-- **Multi-Model Comparison**: Implements and evaluates 5 different classification approaches
-  - Logistic Regression
-  - Random Forest Classifier
-  - K-Nearest Neighbors (KNN)
-  - Multi-Layer Perceptron (MLP) Neural Networks
-  - Custom Keras Neural Network with hyperparameter tuning
+This project includes a full multi-model pipeline that compares five different classification approaches for predicting asteroid orbital classes: Logistic Regression, Random Forest, K-Nearest Neighbors (KNN), an MLP neural network, and a custom Keras neural network enhanced with automated hyperparameter tuning. The workflow begins with a comprehensive preprocessing stage that reduces the original 45-column dataset by removing 38 unnecessary features, imputes missing values using median statistics, and performs an 80–20 train-test split to standardize evaluation. 
 
-- **Data Preprocessing Pipeline**: Comprehensive data cleaning and preparation
-  - Removal of 38 unnecessary features from original 45-column dataset
-  - Null value imputation using median values
-  - Train-test split (80-20)
-
-- **SMOTE Data Augmentation**: Addresses class imbalance by generating synthetic samples for minority classes
-
-- **Hyperparameter Optimization**: Automated tuning using Weights & Biases sweeps across 6,750 parameter combinations
-
-- **Comprehensive Evaluation**: Detailed model assessment using accuracy scores, confusion matrices, and overfitting analysis
+To address significant class imbalance across orbital types, the project applies SMOTE data augmentation to generate synthetic samples for underrepresented classes, helping models learn robust decision boundaries rather than overfitting to the majority class. Finally, the best-performing neural network is optimized through Weights & Biases sweeps, exploring thousands of hyperparameter combinations and pairing the results with thorough evaluation tooling, including accuracy scoring, confusion matrices, and overfitting checks.
 
 ## Orbital Classes
 
@@ -45,19 +31,15 @@ The project classifies asteroids into the following categories:
 
 ## Results
 
-### Best Performing Model: Custom Keras Neural Network
-- **Validation Accuracy**: 99.18%
-- **Architecture**: 5 hidden layers with 16 nodes each
-- **Activation Function**: ReLU
-- **Epochs**: 149
-- **Batch Size**: 1000
-- **Performance**: Nearly diagonal confusion matrix indicating excellent classification across all orbital types
+Across all tested models, performance clearly improved as the classifiers became better at capturing non-linear boundaries and higher-dimensional interactions between orbital elements. Simpler linear decision-making struggled with the complexity of the class structure, while neighborhood-based and neural approaches were able to separate orbital regimes far more effectively.
 
-### Other Model Performance
-- **MLP Neural Network**: 96.93% accuracy
-- **K-Nearest Neighbors**: 96.07% accuracy
-- **Random Forest**: 94.87% accuracy
-- **Logistic Regression**: 56.23% accuracy
+The strongest performer was the custom Keras neural network, which achieved 99.18% validation accuracy. Its confusion matrix was nearly perfectly diagonal, indicating that the model generalized cleanly across the orbital categories rather than succeeding only on a few dominant classes. This result reflects both the network’s representational capacity and the project’s focus on feature selection, preprocessing, and handling imbalance.
+
+The best model used a consistent, compact architecture with five hidden layers and 16 nodes per layer, trained with ReLU activations for 149 epochs and a batch size of 1000. In practice, this setup was strong enough to learn the subtle transitions between orbit families (for example, near-Earth vs. main-belt boundaries) without requiring an excessively large network.
+
+Other models performed well but trailed the tuned Keras approach. The MLP neural network reached 96.93% accuracy, followed closely by KNN at 96.07%, showing that non-linear decision surfaces (either learned or instance-based) are well-suited to the orbital feature space. The Random Forest achieved 94.87%, which is still strong but suggests that the problem benefits from smoother, higher-capacity representations than tree ensembles alone provided in this setup.
+
+In contrast, Logistic Regression reached only 56.23% accuracy, reinforcing that orbital classes are not cleanly separable using a linear model in the chosen feature space. Overall, the results show that combining a carefully cleaned feature set with imbalance correction and neural network optimization can yield extremely high classification performance on large-scale orbital data.
 
 ## Usage
 
@@ -108,9 +90,9 @@ wandb.agent(sweep_id, train, count=100)
 
 ## Dataset
 
-**Source**: NASA Jet Propulsion Laboratory (JPL)
+The dataset used in this project comes from NASA’s Jet Propulsion Laboratory (JPL) and contains orbital and physical parameters for a large population of asteroids, enabling supervised classification into distinct orbital families relevant to solar system dynamics and planetary defense. The original dataset contains 958,524 entries with 45 total features, combining both orbital elements and observational/physical properties. 
 
-**Original Size**: 958,524 entries × 45 features
+To reduce computational load and improve learning efficiency, the dataset was streamlined to a smaller set of high-signal features, and the dominant Main-belt asteroid (MBA) class was removed, since it made up roughly 89% of the total samples and would otherwise overwhelm training. The final training data uses a focused feature set designed to preserve the orbital geometry and motion information most directly tied to class definitions, while keeping the target label as the asteroid’s orbital class.
 
 **Features Used** (12 total):
 - Absolute magnitude (H)
